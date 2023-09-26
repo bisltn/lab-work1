@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    const int size = 6;
+    int arr[size];
+    for (int i = 0; i < size; i++) {
+        cout << "type numbers of first array : ";
+        cin >> arr[i];
+    }
+
+    cout << endl;
+    int arr2[size];
+    for (int i = 0; i < size; i++) {
+        cout << "type numbers of second array : ";
+        cin >> arr2[i];
+    }
+    int arr3[size];
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            if (arr[i] == arr2[j]) {
+                arr3[i] = 0;
+            }
+            else {
+                arr3[i] = arr[i];
+            }
+        }
+        cout << arr3[i];
+    }
+}
