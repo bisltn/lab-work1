@@ -1,0 +1,23 @@
+#include <iostream>
+#include <vector>
+
+// Функция для добавления блока элементов в конец массива
+void appendBlock(std::vector<int>& arr, const std::vector<int>& block) {
+    arr.insert(arr.end(), block.begin(), block.end());
+}
+
+int main() {
+    std::vector<int> myArray = {1, 2, 3};
+    std::vector<int> blockToAdd = {4, 5, 6};
+
+    // Вызываем функцию для добавления блока элементов в конец массива
+    appendBlock(myArray, blockToAdd);
+
+    // Выводим результат
+    for (int element : myArray) {
+        std::cout << element << " ";
+    }
+    std::cout << std::endl;
+
+    return 0;
+}

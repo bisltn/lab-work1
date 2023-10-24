@@ -1,0 +1,60 @@
+#include <iostream>
+
+int* createArray(int size) {
+    int* arr = new int[size];
+    return arr;
+}
+
+void deleteArray(int* arr) {
+    delete[] arr;
+}
+
+void insertUnique(int* &result, int &resultSize, int value) {
+    for (int i = 0; i < resultSize; i++) {
+        if (result[i] == value) {
+            return; 
+        }
+    }
+    result[resultSize] = value;
+    resultSize++;
+}
+
+int main() {
+    int M, N;
+    std::cout << "Введите размер массива A (M): ";
+    std::cin >> M;
+    std::cout << "Введите размер массива B (N): ";
+    std::cin >> N;
+
+    int* A = createArray(M);
+    int* B = createArray(N);
+    int* result = createArray(std::min(M, N)); // Размер результирующего массива не превысит min(M, N)
+    int resultSize = 0;
+
+    for (int i = 0; i < M; i++) {
+        bool isUnique = true;
+        for (int j = 0; j < N; j++) {
+            if (A[i] == B[j]) {
+                isUnique = false;
+                break;
+            }
+        }
+        if (isUnique) {
+            insertUnique(result, resultSize, A[i]);
+        }
+    }
+
+    for (int i = 0; i < N; i++) {
+        bool isUnique = true;
+        for (int j = 0; j < M; j++) {
+            if (B[i] == A[j]) {
+                isUnique = false;
+                break;
+            }
+        }
+        if (isUnique) {
+            insertUnique(result, resultSize, B[i]);
+        }
+    }
+    return 0;
+}

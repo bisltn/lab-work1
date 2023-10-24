@@ -1,0 +1,22 @@
+#include <iostream>
+#include <vector>
+void insertBlock(std::vector<int>& arr, const std::vector<int>& block, int startIndex) {
+    if (startIndex >= 0 && startIndex <= arr.size()) {
+        arr.insert(arr.begin() + startIndex, block.begin(), block.end());
+    }
+}
+
+int main() {
+    std::vector<int> myArray = {1, 2, 7, 8};
+    std::vector<int> blockToInsert = {3, 4, 5, 6};
+    int insertionIndex = 2;
+
+    insertBlock(myArray, blockToInsert, insertionIndex);
+
+    for (int element : myArray) {
+        std::cout << element << " ";
+    }
+    std::cout << std::endl;
+
+    return 0;
+}
